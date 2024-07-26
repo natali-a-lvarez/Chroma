@@ -1,7 +1,7 @@
 const { useState, useEffect } = require("react");
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
-import logo from "../src/logo.png";
+import logo from "../../assets/chroma-logo.png";
 import { LogIn, LogOut } from "react-ionicons";
 
 // Import log in and out auth0
