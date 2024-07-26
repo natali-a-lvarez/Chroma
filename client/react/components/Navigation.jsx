@@ -22,6 +22,9 @@ function Navigation() {
           <a>Color Picker</a>
         </li>
         <li>
+          <a>Saved</a>
+        </li>
+        <li>
           <a>
             {isAuthenticated ? (
               <LogoutButton />
