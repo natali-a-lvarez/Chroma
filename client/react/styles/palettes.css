@@ -1,3 +1,8 @@
+.palettes {
+    gap: 1.5em;
+    flex-wrap: ;
+}
+
 .palette {
     background-color: var(--light-grey);
     height: 7.5em;
@@ -11,6 +16,7 @@
     height: 4.5em;
     width: 4.5em;
     border-radius: 100;
+    border: black 1pt solid;
 }
 
 .color-container {
@@ -18,4 +24,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    margin: 5px;
+}
+
+h5 {
+    font-weight: lighter;
+    text-align: center;
+}
+
+.hex-code {
+    font-size: 0.8em;
+    color: var(--dark-grey);
 }

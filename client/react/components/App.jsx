@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <Navigation />
-      <h1>Chroma</h1>
 
         <Saves />
     </>

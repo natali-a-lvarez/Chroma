@@ -11,4 +11,11 @@ section{
 button {
     background: none;
     border: none;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #939090;
+}
+
+.active {
+    color: black;
 }

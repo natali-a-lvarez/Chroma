@@ -50,8 +50,8 @@ function Saves() {
   return (
     <section>
       <div className="saves-flex">
-        <button onClick={togglePalettesView}>Saved Palettes</button>
-        <button onClick={toggleColorsView}>Saved Colors</button>
+        <button className={palettesView ? "active" : ""} onClick={togglePalettesView}>Saved Palettes</button>
+        <button className={colorsView ? "active" : ""} onClick={toggleColorsView}>Saved Colors</button>
       </div>
 
       {/* Toggle Saved Palettes and Colors Display based on view (palettes/colors) */}
@@ -60,7 +60,7 @@ function Saves() {
       ) : (
         colorsView && (
           <>
-            <h4>Saved Colors</h4>
+            <h5>No Saved Colors!</h5>
             {/* Conditional: If user has colors saved show results, else display "No saved colors" */}
             {/* Map out saved colors to divs */}
           </>

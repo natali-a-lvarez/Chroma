@@ -16,7 +16,7 @@ function Palettes({ userData }) {
 
     return (
         <section>
-            <div className="palettes" style={{display: userPalettes.length > 1 ? 'flex' : 'block', justifyContent: userPalettes.length > 1 ? 'space-evenly' : 'center'}}>
+            <div className="palettes" style={{display: userPalettes && userPalettes.length > 1 ? 'grid' : 'block', gridTemplateColumns: userPalettes && userPalettes.length > 1 ? 'repeat(2, 1fr)' : 'none', justifyContent: userPalettes && userPalettes.length > 1 ? 'space-evenly' : 'center'}}>
             {isAuthenticated && userPalettes ? (
                 userPalettes.map((palette, idx) => (
                     <div className="palette" key={idx}>
@@ -30,8 +30,8 @@ function Palettes({ userData }) {
                             ))}
                         </div>
                     ))
-                ) : isAuthenticated && (
-                    <h4>No saved palettes</h4>
+                ) : !userPalettes && (
+                    <h5>No Saved Palettes!</h5>
                 )}
           </div>
 
