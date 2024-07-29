@@ -1,0 +1,21 @@
+section{
+    margin: var(--section-margin)
+}
+
+.saves-flex {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #939090;
+}
+
+.active {
+    color: black;
+}

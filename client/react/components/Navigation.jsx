@@ -22,7 +22,9 @@ function Navigation() {
           <a>Color Picker</a>
         </li>
         <li>
-          <a>Saved</a>
+          {isAuthenticated && (
+            <a>Saves</a>
+          )}
         </li>
         <li>
           <a>
