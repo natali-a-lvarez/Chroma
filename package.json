@@ -2,7 +2,8 @@
   "name": "chroma",
   "scripts": {
     "client-dev": "parcel client/index.html --open",
-    "build": "parcel build client/index.html"
+    "build": "parcel build client/index.html",
+    "start": "concurrently \"python3 server/app.py\" \"npm run client-dev\""
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
@@ -15,6 +16,7 @@
     "react-ionicons": "^4.2.1"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
     "process": "^0.11.10"
   }
 }

@@ -10,7 +10,7 @@ user = Blueprint('users', __name__)
 
 
 # Get A User
-@user.route('/', methods=['GET'])
+@user.route('/', methods=['POST'])
 def get_all_saves():
     try:
         # Get Request Data
