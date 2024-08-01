@@ -41,17 +41,7 @@ function Navigation({ setSavesPage, setPalettePage, setColorPickerPage }) {
         </li>
         <li>{isAuthenticated && <p onClick={handleSavesPage}>Saves</p>}</li>
         <li>
-          <a>
-            {isAuthenticated ? (
-              <LogoutButton />
-            ) : (
-              //   <LogOut color={"#fff"} height="30px" width="30px" />
-
-              <LoginButton />
-
-              //   <LogIn color={"#fff"} height="30px" width="30px" />
-            )}
-          </a>
+          <a>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</a>
         </li>
       </ul>
     </div>

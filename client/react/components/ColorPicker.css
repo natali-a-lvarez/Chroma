@@ -1,0 +1,125 @@
+.color-picker-container {
+  background-color: var(--dark-color);
+  padding: 3rem;
+  margin: 2rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+
+  width: 70%;
+}
+
+.right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.open-picker-btn {
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  padding: 0.45rem 8rem;
+  font-weight: 500;
+  color: black;
+}
+
+.open-picker-btn:hover {
+  background-color: #b6b6b6;
+}
+
+.color-text-container {
+  display: flex;
+  gap: 5px;
+}
+
+.selected-color-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected-color {
+  height: 150px;
+  aspect-ratio: 1/1;
+  border: solid 1px #9c9c9c;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.save-btn {
+  font-weight: 500;
+  padding: 0.5rem 3rem;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  color: inherit;
+}
+
+.login-container {
+  color: var(--accent-color);
+  text-align: center;
+}
+
+.login-btn {
+  background-color: red;
+}
+
+.img-col-container {
+  min-width: 100%;
+}
+
+.img-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.img-container img {
+  border-radius: inherit;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.276);
+  max-width: 55rem;
+  min-width: 100%;
+  max-height: 35rem;
+  min-height: 100%;
+}
+
+.img-container-empty {
+  border: dashed 1px grey;
+  width: 800px;
+  height: auto;
+  aspect-ratio: 2/1;
+}
+
+input[type="file"] {
+  margin-top: 15px;
+  align-self: start;
+  color: var(--light-grey);
+}
+
+input[type="file"]::file-selector-button {
+  border: none;
+  background-color: #ccb1a6;
+  border-radius: 3px;
+}

@@ -12,6 +12,12 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-/* * {
+.heading {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* 
+* {
   border: red dashed 1pt;
 } */
