@@ -1,6 +1,5 @@
 .palettes {
     gap: 1.5em;
-    flex-wrap: ;
 }
 
 .palette {
@@ -13,8 +12,8 @@
 }
 
 .color {
-    height: 4.5em;
-    width: 4.5em;
+    height: 4em;
+    width: 4em;
     border-radius: 100;
     border: black 1pt solid;
 }

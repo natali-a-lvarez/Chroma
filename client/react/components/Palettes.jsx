@@ -9,14 +9,14 @@ function Palettes({ userData }) {
     const userPalettes = userData.saved_palettes;
 
     function handleCopyColor(currColor) {
-        navigator.clipboard.writeText(currColor);
+        navigator.clipboard.writeText("#" + currColor);
         alert(`Copied #${currColor} to clipboard!`);
     }
 
 
     return (
         <section>
-            <div className="palettes" style={{display: userPalettes && userPalettes.length > 1 ? 'grid' : 'block', gridTemplateColumns: userPalettes && userPalettes.length > 1 ? 'repeat(2, 1fr)' : 'none', justifyContent: userPalettes && userPalettes.length > 1 ? 'space-evenly' : 'center'}}>
+            <div className="palettes" style={{display: userPalettes && userPalettes.length > 1 ? 'flex' : 'block', flexWrap: userPalettes && userPalettes.length > 1 ? 'wrap' : 'nowrap', justifyContent: userPalettes && userPalettes.length > 1 ? 'space-evenly' : 'center'}}>
             {isAuthenticated && userPalettes ? (
                 userPalettes.map((palette, idx) => (
                     <div className="palette" key={idx}>
