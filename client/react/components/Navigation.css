@@ -19,6 +19,11 @@
   margin-bottom: 0;
 }
 
+.nav_links p {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
 .nav-icon {
   color: #fff;
 }

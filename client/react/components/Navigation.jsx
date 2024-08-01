@@ -8,24 +8,38 @@ import { LogIn, LogOut } from "react-ionicons";
 import LoginButton from "./Login";
 import LogoutButton from "./Logout";
 
-function Navigation() {
+function Navigation({ setSavesPage, setPalettePage, setColorPickerPage }) {
   const { user, isAuthenticated } = useAuth0();
+
+  function handlePaletterGeneratorPage() {
+    setColorPickerPage(false);
+    setPalettePage(true);
+    setSavesPage(false);
+  }
+
+  function handleColorPickerPage() {
+    setColorPickerPage(true);
+    setPalettePage(false);
+    setSavesPage(false);
+  }
+
+  function handleSavesPage() {
+    setColorPickerPage(false);
+    setPalettePage(false);
+    setSavesPage(true);
+  }
 
   return (
     <div className="navigation">
       <img className="logo" src={logo} alt="chroma logo" />
       <ul className="nav_links">
         <li>
-          <a>Palette Generator</a>
+          <p onClick={handlePaletterGeneratorPage}>Palette Generator</p>
         </li>
         <li>
-          <a>Color Picker</a>
+          <p onClick={handleColorPickerPage}>Color Picker</p>
         </li>
-        <li>
-          {isAuthenticated && (
-            <a>Saves</a>
-          )}
-        </li>
+        <li>{isAuthenticated && <p onClick={handleSavesPage}>Saves</p>}</li>
         <li>
           <a>
             {isAuthenticated ? (
