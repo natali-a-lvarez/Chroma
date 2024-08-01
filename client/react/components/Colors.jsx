@@ -13,12 +13,11 @@ function Colors({ userData }) {
     }
 
     return (
-        <section>
-        <div className="colors" style={{display: userColors && userColors.length > 1 ? 'flex' : 'block', flexWrap: userColors && userColors.length > 1 ? 'wrap' : 'nowrap', justifyContent: userColors && userColors.length > 1 ? 'space-evenly' : 'center'}}>
+        <div className="saved-colors" style={{display: userColors && userColors.length > 1 ? 'flex' : 'block', flexWrap: userColors && userColors.length > 1 ? 'wrap' : 'nowrap', justifyContent: userColors && userColors.length > 1 ? 'space-evenly' : 'center'}}>
             {isAuthenticated && userColors ? (
                 userColors.map((color, idx) => (
-                    <div className="color-container" key={idx}>
-                        <div className="color" style={{ backgroundColor: "#" + color }}></div>
+                    <div className="saved-color-container" key={idx}>
+                        <div className="saved-color" style={{ backgroundColor: "#" + color }}></div>
                         <button onClick={() => handleCopyColor(color)} className="hex-code" id={color}>
                             #{color}
                         </button>
@@ -27,7 +26,6 @@ function Colors({ userData }) {
                     <h5>No Saved Colors!</h5>
                 )}
         </div>
-        </section>
     );
 }
 
