@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import Palettes from "./Palettes";
+import Colors from "./Colors";
 
 import "../styles/saves.css";
 import apiURL from "../api" 
@@ -9,7 +10,7 @@ import axios from "axios";
 
 
 function Saves() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   
   const [palettesView, setPalettesView] = useState(true);
   const [colorsView, setColorsView] = useState(false);
@@ -60,9 +61,7 @@ function Saves() {
       ) : (
         colorsView && (
           <>
-            <h5>No Saved Colors!</h5>
-            {/* Conditional: If user has colors saved show results, else display "No saved colors" */}
-            {/* Map out saved colors to divs */}
+            <Colors userData={userData}/>
           </>
         )
       )}

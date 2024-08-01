@@ -5,14 +5,13 @@ import "../styles/palettes.css";
 
 
 function Palettes({ userData }) {
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { isAuthenticated } = useAuth0();
     const userPalettes = userData.saved_palettes;
 
     function handleCopyColor(currColor) {
         navigator.clipboard.writeText("#" + currColor);
         alert(`Copied #${currColor} to clipboard!`);
     }
-
 
     return (
         <section>
