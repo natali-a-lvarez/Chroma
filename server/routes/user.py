@@ -95,7 +95,7 @@ def save_color():
             if color == new_color:
                 return jsonify({'message': 'Color already saved'}), 400
             
-        user.saved_colors.append(new_color)
+        user.saved_colors.insert(0, new_color)
 
         flag_modified(user, 'saved_colors')
         db.session.commit()
