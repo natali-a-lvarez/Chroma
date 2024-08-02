@@ -95,7 +95,7 @@
 }
 
 .error-msg {
-  color: red;
+  color: rgb(162, 0, 0);
   align-self: center;
   margin-top: 5px;
 }

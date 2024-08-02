@@ -21,11 +21,20 @@ def get_all_saves():
         # Get User
         user = User.query.filter_by(email=data['email']).first()
         if not user:
-            return jsonify({'message': 'User not found'}), 404
+            user = User(
+                email=data['email'],
+                saved_palettes=[],
+                saved_colors=[]
+            )
+        db.session.add(user)
+        db.session.commit()
+        user = User.query.filter_by(email=data['email']).first()
 
         return jsonify(user.serialize()), 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500
+    
+
 
 # Get All Users (Testing Purposes)
 @user.route('/all', methods=['GET'])

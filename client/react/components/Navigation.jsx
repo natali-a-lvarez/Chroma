@@ -8,26 +8,12 @@ import { LogIn, LogOut } from "react-ionicons";
 import LoginButton from "./Login";
 import LogoutButton from "./Logout";
 
-function Navigation({ setSavesPage, setPalettePage, setColorPickerPage }) {
+function Navigation({
+  handlePaletterGeneratorPage,
+  handleColorPickerPage,
+  handleSavesPage,
+}) {
   const { user, isAuthenticated } = useAuth0();
-
-  function handlePaletterGeneratorPage() {
-    setColorPickerPage(false);
-    setPalettePage(true);
-    setSavesPage(false);
-  }
-
-  function handleColorPickerPage() {
-    setColorPickerPage(true);
-    setPalettePage(false);
-    setSavesPage(false);
-  }
-
-  function handleSavesPage() {
-    setColorPickerPage(false);
-    setPalettePage(false);
-    setSavesPage(true);
-  }
 
   return (
     <div className="navigation">

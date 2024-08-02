@@ -12,7 +12,14 @@ import { Image } from "react-ionicons";
 import apiURL from "../api";
 import axios from "axios";
 
-const ColorPicker = () => {
+const ColorPicker = ({
+  userData,
+  setUserData,
+  fetchUser,
+  handleSavesPage,
+  setColorsView,
+  setPalettesView,
+}) => {
   const { user, isAuthenticated } = useAuth0();
   const [color, setColor] = useState(null);
   const [image, setImage] = useState(null);
@@ -45,8 +52,10 @@ const ColorPicker = () => {
           color: color.replace("#", ""),
         });
         const data = res.data;
-        console.log(data);
         setUserData(data);
+        setColorsView(true);
+        setPalettesView(false);
+        handleSavesPage(true);
       } catch (error) {
         console.error("Error could not save color.", error);
       }
