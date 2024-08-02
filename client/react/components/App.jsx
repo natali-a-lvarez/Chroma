@@ -12,7 +12,7 @@ function App() {
   const [palettePage, setPalettePage] = useState(true);
   const [colorPickerPage, setColorPickerPage] = useState(false);
   return (
-    <>
+    <main>
       <Navigation
         setSavesPage={setSavesPage}
         setPalettePage={setPalettePage}
@@ -22,7 +22,7 @@ function App() {
       {savesPage && !palettePage && !colorPickerPage && <Saves />}
       {palettePage && !savesPage && !colorPickerPage && <PaletterGenerator />}
       {colorPickerPage && !savesPage && !palettePage && <ColorPicker />}
-    </>
+    </main>
   );
 }
 
