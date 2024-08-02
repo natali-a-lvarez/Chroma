@@ -1,0 +1,24 @@
+.saved-color-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.saved-color {
+    height: 7em;
+    width: 7em;
+    border-radius: 100;
+    border: black 1pt solid;
+    justify-content: center;
+    gap: 15px;
+}
+
+.saved-color-container button {
+    font-size: 1.2em;
+    color: var(--dark-grey);
+    padding-top: 0.8em;
+}
+
+.saved-colors {
+    margin-top: 2em;
+}
