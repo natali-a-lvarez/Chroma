@@ -8,30 +8,12 @@ import "../styles/saves.css";
 import apiURL from "../api";
 import axios from "axios";
 
-function Saves() {
+function Saves({ userData, setUserData, fetchUser }) {
   const { user, isAuthenticated } = useAuth0();
 
   const [palettesView, setPalettesView] = useState(true);
   const [colorsView, setColorsView] = useState(false);
-  const [userData, setUserData] = useState([]);
 
-  // Fetch User from Database
-  async function fetchUser(user) {
-    try {
-      const res = await axios.post(`${apiURL}/users/`, {
-        email: user.email,
-      });
-      const data = res.data;
-      console.log(data);
-      setUserData(data);
-    } catch (error) {
-      console.error("Error fetching user data", error);
-    }
-  }
-
-  useEffect(() => {
-    fetchUser(user);
-  }, [userData]);
 
   function togglePalettesView() {
     setPalettesView(true);
