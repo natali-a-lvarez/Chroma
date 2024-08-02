@@ -1,9 +1,11 @@
+/* Container for each individual saved color */
 .saved-color-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Saved Color Styles */
 .saved-color {
     height: 7em;
     width: 7em;
@@ -13,12 +15,46 @@
     gap: 15px;
 }
 
+/* Hex Code Button Styles */
 .saved-color-container button {
     font-size: 1.2em;
     color: var(--dark-grey);
     padding-top: 0.8em;
 }
 
+/* Div holding ALL saved colors - Universal Styles */
 .saved-colors {
-    margin-top: 2em;
+    margin: 2em 4em;
+    gap: 1em;
+    overflow-y: auto;
+    max-height: 70vh
+}
+
+/* If User has atleast five saved colors */
+#five-saved-colors {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+/* If User has less than 5 saved colors */
+#less-five-saved-colors {
+    display: flex;
+    justify-content: center;
+}
+
+/* Div for copied color message */
+#message {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: none;
+    background-color: whitesmoke;
+}
+
+/* Copied color button in div */
+#message button {
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 1.5em;
+    padding: 0.5em 1em;
 }
