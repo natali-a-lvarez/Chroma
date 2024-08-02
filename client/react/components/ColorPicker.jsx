@@ -40,7 +40,7 @@ const ColorPicker = () => {
       setShowLoginMessage(true);
     } else {
       try {
-        const res = await axios.post(`${apiURL}/users/save-color/`, {
+        const res = await axios.post(`${apiURL}/users/save-color`, {
           email: user.email,
           color: color.replace("#", ""),
         });
