@@ -8,12 +8,16 @@ import "../styles/saves.css";
 import apiURL from "../api";
 import axios from "axios";
 
-function Saves({ userData, setUserData, fetchUser }) {
+function Saves({
+  userData,
+  setUserData,
+  fetchUser,
+  colorsView,
+  setColorsView,
+  palettesView,
+  setPalettesView,
+}) {
   const { user, isAuthenticated } = useAuth0();
-
-  const [palettesView, setPalettesView] = useState(true);
-  const [colorsView, setColorsView] = useState(false);
-
 
   function togglePalettesView() {
     setPalettesView(true);

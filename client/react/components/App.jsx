@@ -15,8 +15,12 @@ function App() {
   const [palettePage, setPalettePage] = useState(true);
   const [colorPickerPage, setColorPickerPage] = useState(false);
   const [userData, setUserData] = useState([]);
-  
+
+  const [palettesView, setPalettesView] = useState(true);
+  const [colorsView, setColorsView] = useState(false);
+
   const { user, isAuthenticated } = useAuth0();
+  console.log(userData);
 
   // Fetch User from Database
   async function fetchUser(user) {
@@ -25,7 +29,6 @@ function App() {
         email: user.email,
       });
       const data = res.data;
-      // console.log(data);
       setUserData(data);
     } catch (error) {
       console.error("Error fetching user data", error);
@@ -33,22 +36,63 @@ function App() {
   }
 
   useEffect(() => {
-    // isAuthenticated &&
-      fetchUser(user);
+    fetchUser(user);
   }, []);
 
+  function handlePaletterGeneratorPage() {
+    setColorPickerPage(false);
+    setPalettePage(true);
+    setSavesPage(false);
+  }
+
+  function handleColorPickerPage() {
+    setColorPickerPage(true);
+    setPalettePage(false);
+    setSavesPage(false);
+  }
+
+  function handleSavesPage() {
+    setColorPickerPage(false);
+    setPalettePage(false);
+    setSavesPage(true);
+  }
 
   return (
     <main>
       <Navigation
-        setSavesPage={setSavesPage}
-        setPalettePage={setPalettePage}
-        setColorPickerPage={setColorPickerPage}
+        handlePaletterGeneratorPage={handlePaletterGeneratorPage}
+        handleColorPickerPage={handleColorPickerPage}
+        handleSavesPage={handleSavesPage}
       />
 
-      {savesPage && !palettePage && !colorPickerPage && <Saves userData={userData} setUserData={setUserData} fetchUser={fetchUser} />}
-      {palettePage && !savesPage && !colorPickerPage && <PaletterGenerator userData={userData} setUserData={setUserData} fetchUser={fetchUser}/>}
-      {colorPickerPage && !savesPage && !palettePage && <ColorPicker userData={userData} setUserData={setUserData} fetchUser={fetchUser} />}
+      {savesPage && !palettePage && !colorPickerPage && (
+        <Saves
+          userData={userData}
+          setUserData={setUserData}
+          fetchUser={fetchUser}
+          colorsView={colorsView}
+          setColorsView={setColorsView}
+          palettesView={palettesView}
+          setPalettesView={setPalettesView}
+        />
+      )}
+      {palettePage && !savesPage && !colorPickerPage && (
+        <PaletterGenerator
+          userData={userData}
+          setUserData={setUserData}
+          fetchUser={fetchUser}
+        />
+      )}
+      {colorPickerPage && !savesPage && !palettePage && (
+        <ColorPicker
+          userData={userData}
+          setUserData={setUserData}
+          fetchUser={fetchUser}
+          handleSavesPage={handleSavesPage}
+          setColorsView={setColorsView}
+          setPalettesView={setPalettesView}
+        />
+      )}
     </main>
   );
 }
