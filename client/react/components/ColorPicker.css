@@ -1,50 +1,64 @@
-.color-picker-container {
-  background-color: var(--dark-color);
+.color-picker-page-container {
   padding: 3rem;
   margin: 2rem 6rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  border-radius: 10px;
-  color: #fff;
-}
-
-.form-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .left-col {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
+  flex: 1;
+  align-items: start;
+  gap: 10px;
 
-  width: 70%;
+  color: #000;
 }
 
 .right-col {
+  background-color: var(--dark-color);
+  padding: 3rem;
+  border-radius: 10px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  color: #fff;
+}
+
+.color-dropper-container p,
+.selected-color-container p {
+  margin-bottom: 5px;
+}
+
+.color-dropper-container,
+.selected-color-container,
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.open-picker-btn,
+.selected-color,
+.save-btn {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.25rem 8rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .open-picker-btn {
-  background-color: var(--light-grey);
-  border-radius: 5px;
-  padding: 0.45rem 8rem;
-  font-weight: 500;
-  color: black;
+  background-color: rgb(198, 194, 194);
 }
 
 .open-picker-btn:hover {
-  background-color: #b6b6b6;
+  background-color: rgb(158, 158, 158);
 }
 
 .color-text-container {
@@ -52,35 +66,38 @@
   gap: 5px;
 }
 
-.selected-color-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .selected-color {
-  height: 150px;
-  aspect-ratio: 1/1;
+  height: 80px;
   border: solid 1px #9c9c9c;
-  border-radius: 100px;
-  margin-bottom: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
 
 .save-btn {
   font-weight: 500;
-  padding: 0.5rem 3rem;
-  background-color: var(--accent-color);
+  padding: 0.25rem 3rem;
+  background-color: #393939;
   border-radius: 5px;
-  color: inherit;
+  color: #fff;
+  font-weight: 400;
 }
 
-.login-container {
-  color: var(--accent-color);
-  text-align: center;
+.save-btn:hover {
+  background-color: #000000;
 }
 
-.login-btn {
-  background-color: red;
+.disabled-btn {
+  background-color: #9c9c9c;
+}
+
+.disabled-btn:hover {
+  background-color: #9c9c9c;
+}
+
+.error-msg {
+  color: red;
+  align-self: center;
+  margin-top: 5px;
 }
 
 .img-col-container {

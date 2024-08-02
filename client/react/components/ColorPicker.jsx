@@ -8,10 +8,15 @@ import { EyedropOutline } from "react-ionicons";
 import { CopyOutline } from "react-ionicons";
 import { Image } from "react-ionicons";
 
+// fetching
+import apiURL from "../api";
+import axios from "axios";
+
 const ColorPicker = () => {
   const { user, isAuthenticated } = useAuth0();
   const [color, setColor] = useState(null);
   const [image, setImage] = useState(null);
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   const openEyeDropper = async () => {
     let eyeDropper = new window.EyeDropper();
@@ -30,20 +35,43 @@ const ColorPicker = () => {
     }
   };
 
+  const handleSave = async () => {
+    if (!isAuthenticated) {
+      setShowLoginMessage(true);
+    } else {
+      try {
+        const res = await axios.post(`${apiURL}/users/save-color/`, {
+          email: user.email,
+          color: color.replace("#", ""),
+        });
+        const data = res.data;
+        console.log(data);
+        setUserData(data);
+      } catch (error) {
+        console.error("Error could not save color.", error);
+      }
+    }
+  };
+
   return (
     <div className="section">
       <h1 className="heading">Color Picker</h1>
-      <div className="color-picker-container">
+      {/* Contains the whole color picker minus title */}
+      <div className="color-picker-page-container">
+        {/* left col only renders in an image is uploaded */}
         {image && (
           <div className="left-col">
-            <div className="form-section">
+            <div className="color-dropper-container">
+              <p>Open color dropper:</p>
               <button className={"open-picker-btn"} onClick={openEyeDropper}>
-                Open color dropper
+                <EyedropOutline color={"#000"} />
               </button>
             </div>
 
+            {/* Only renders in image and color are not null */}
             {color && (
               <div className="selected-color-container">
+                <p>Selected Color:</p>
                 <button
                   className="selected-color"
                   style={{ background: color }}
@@ -52,21 +80,24 @@ const ColorPicker = () => {
                 <p className="color-text-container" onClick={handleCopyColor}>
                   {color}
                   <span>
-                    <CopyOutline color={"#ffffff"} height="18px" width="18px" />
+                    <CopyOutline color={"#000"} height="18px" width="18px" />
                   </span>
                 </p>
               </div>
             )}
-            {color && isAuthenticated && (
-              <>
-                <button className="save-btn">Save Color</button>
-              </>
+            {/* button becomes disabled if you are not logged in*/}
+            {color && (
+              <button
+                onClick={handleSave}
+                className={
+                  isAuthenticated ? "save-btn" : "save-btn disabled-btn"
+                }
+              >
+                Save Color
+              </button>
             )}
-            {color && !isAuthenticated && (
-              <div className="login-container">
-                <LoginButton className="login-btn" />
-                <p>Log in to save</p>
-              </div>
+            {showLoginMessage && (
+              <p className="error-msg">Please log in to save.</p>
             )}
           </div>
         )}
