@@ -24,6 +24,7 @@ const ColorPicker = ({
   const [color, setColor] = useState(null);
   const [image, setImage] = useState(null);
   const [showLoginMessage, setShowLoginMessage] = useState(false);
+  const [showCopiedMessage, setShowCoppiedMessage] = useState(false);
 
   const openEyeDropper = async () => {
     let eyeDropper = new window.EyeDropper();
@@ -38,7 +39,11 @@ const ColorPicker = ({
   const handleCopyColor = async () => {
     await navigator.clipboard.writeText(color);
     if (color != "No color selected") {
-      alert(`Copied ${color} to clipboard!`);
+      setShowCoppiedMessage(true);
+
+      setTimeout(() => {
+        setShowCoppiedMessage(false);
+      }, 1000);
     }
   };
 
@@ -91,6 +96,11 @@ const ColorPicker = ({
                   <span>
                     <CopyOutline color={"#000"} height="18px" width="18px" />
                   </span>
+                  {showCopiedMessage && (
+                    <p className="copied-color-msg">
+                      Color copied to clipboard.
+                    </p>
+                  )}
                 </p>
               </div>
             )}
