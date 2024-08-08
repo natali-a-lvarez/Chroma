@@ -1,5 +1,4 @@
 .color-picker-page-container {
-  padding: 3rem;
   margin: 2rem 6rem;
   display: flex;
   align-items: start;
@@ -49,7 +48,6 @@
   width: 100%;
   border-radius: 5px;
   padding: 0.25rem 8rem;
-  width: 100%;
   box-sizing: border-box;
 }
 
@@ -80,33 +78,6 @@
   border-radius: 5px;
   background-color: #535353;
   color: #fff;
-}
-
-.save-btn {
-  font-weight: 500;
-  padding: 0.25rem 3rem;
-  background-color: #393939;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: 400;
-}
-
-.save-btn:hover {
-  background-color: #000000;
-}
-
-.disabled-btn {
-  background-color: #9c9c9c;
-}
-
-.disabled-btn:hover {
-  background-color: #9c9c9c;
-}
-
-.error-msg {
-  color: rgb(162, 0, 0);
-  align-self: center;
-  margin-top: 5px;
 }
 
 .img-col-container {

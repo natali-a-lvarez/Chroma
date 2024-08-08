@@ -79,9 +79,10 @@ function App() {
       )}
       {palettePage && !savesPage && !colorPickerPage && (
         <PaletterGenerator
-          userData={userData}
           setUserData={setUserData}
-          fetchUser={fetchUser}
+          setColorsView={setColorsView}
+          setPalettesView={setPalettesView}
+          handleSavesPage={handleSavesPage}
         />
       )}
       {colorPickerPage && !savesPage && !palettePage && (

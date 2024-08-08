@@ -1,29 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
-import "../styles/palettes.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import apiURL from "../api";
 
-function PaletterGenerator() {
-  const [palette, setPalette] = useState([]);
+import "./PaletteGenerator.css";
+import { CopyOutline } from "react-ionicons";
 
-  // const handleSave = async () => {
-  //   if (!isAuthenticated) {
-  //     setShowLoginMessage(true);
-  //   } else {
-  //     try {
-  //       const res = await axios.post(`${apiURL}/users/save-palette`, {
-  //         email: user.email,
-  //         palette: color.replace("#", ""),
-  //       });
-  //       const data = res.data;
-  //       setUserData(data);
-  //       setColorsView(true);
-  //       setPalettesView(false);
-  //       handleSavesPage(true);
-  //     } catch (error) {
-  //       console.error("Error could not save color.", error);
-  //     }
-  //   }
-  // };
+function PaletterGenerator({
+  setUserData,
+  setColorsView,
+  setPalettesView,
+  handleSavesPage,
+}) {
+  const { user, isAuthenticated } = useAuth0();
+  const [palette, setPalette] = useState(null);
+  const [showCopiedMessage, setShowCoppiedMessage] = useState(false);
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
+  const [copiedColor, setCopiedColor] = useState("");
 
   const handleGeneratePalette = async () => {
     try {
@@ -47,25 +40,84 @@ function PaletterGenerator() {
       return hex.length === 1 ? "0" + hex : hex;
     };
 
-    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+    return `${toHex(r)}${toHex(g)}${toHex(b)}`;
+  };
+
+  const handleCopyColor = async (colorCode) => {
+    setCopiedColor(colorCode);
+    await navigator.clipboard.writeText(copiedColor);
+    setShowCoppiedMessage(true);
+
+    setTimeout(() => {
+      setShowCoppiedMessage(false);
+    }, 1500);
+  };
+
+  const handleSave = async () => {
+    if (!isAuthenticated) {
+      setShowLoginMessage(true);
+    } else {
+      try {
+        const res = await axios.post(`${apiURL}/users/save-palette`, {
+          email: user.email,
+          palette: palette.map((color) => rgbToHex(color)),
+        });
+        const data = res.data;
+        setUserData(data);
+        setColorsView(false);
+        setPalettesView(true);
+        handleSavesPage(true);
+      } catch (error) {
+        console.error("Error could not save palette.", error);
+      }
+    }
   };
 
   return (
-    <>
-      <h1>Palette Generator</h1>
-      <button onClick={handleGeneratePalette}>Generate</button>
-      {palette.map((colorCode) => {
-        return (
-          <div>
-            <p>color</p>
-            <span
-              className="color"
-              style={{ backgroundColor: rgbToHex(colorCode) }}
-            ></span>
-          </div>
-        );
-      })}
-    </>
+    <div className="palette-gen_pg">
+      <h1 className="heading">Palette Generator</h1>
+      <button className="palette-gen_btn" onClick={handleGeneratePalette}>
+        Generate
+      </button>
+      {palette && (
+        <div className="palette-gen_palette-container">
+          {palette.map((colorCode) => {
+            return (
+              <div
+                onClick={() => handleCopyColor(rgbToHex(colorCode))}
+                className="palette-gen_color-container"
+              >
+                <div
+                  className="palette-gen_color"
+                  style={{ backgroundColor: "#" + rgbToHex(colorCode) }}
+                ></div>
+                <p>#{rgbToHex(colorCode)}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {showCopiedMessage && (
+        <p className="palette-gen_copied-color" id="copied-message-button">
+          Color copied to clipboard.
+        </p>
+      )}
+      {palette && (
+        <>
+          <button
+            onClick={handleSave}
+            className={
+              isAuthenticated
+                ? "palette-gen_btn palette-gen_save-btn"
+                : "palette-gen_btn palette-gen_save-btn disabled-btn"
+            }
+          >
+            Save
+          </button>
+          {showLoginMessage && <p className="error-msg">Please log in.</p>}
+        </>
+      )}
+    </div>
   );
 }
 
