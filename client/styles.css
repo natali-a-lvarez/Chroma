@@ -17,6 +17,29 @@ body {
   margin-top: 40px;
 }
 
-/* * {
-  border: red dashed 1pt;
-} */
+.save-btn {
+  font-weight: 500;
+  padding: 0.25rem 3rem;
+  background-color: #393939;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.save-btn:hover {
+  background-color: #000000;
+}
+
+.disabled-btn {
+  background-color: #9c9c9c;
+}
+
+.disabled-btn:hover {
+  background-color: #9c9c9c;
+}
+
+.error-msg {
+  color: rgb(162, 0, 0);
+  align-self: center;
+  margin-top: 5px;
+}
