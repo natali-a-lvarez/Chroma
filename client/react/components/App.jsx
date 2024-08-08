@@ -20,16 +20,17 @@ function App() {
   const [colorsView, setColorsView] = useState(false);
 
   const { user, isAuthenticated } = useAuth0();
-  console.log(userData);
 
   // Fetch User from Database
   async function fetchUser(user) {
     try {
-      const res = await axios.post(`${apiURL}/users/`, {
-        email: user.email,
-      });
-      const data = res.data;
-      setUserData(data);
+      if (isAuthenticated) {
+        const res = await axios.post(`${apiURL}/users/`, {
+          email: user.email,
+        });
+        const data = res.data;
+        setUserData(data);
+      }
     } catch (error) {
       console.error("Error fetching user data", error);
     }
