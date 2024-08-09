@@ -7,7 +7,6 @@ function Palettes({ userData, deletePalette }) {
   const { user, isAuthenticated } = useAuth0();
   const userPalettes = userData.saved_palettes;
 
-  // Set Current Palette
 
   function handleCopyColor(currColor) {
     navigator.clipboard.writeText("#" + currColor);
@@ -73,7 +72,9 @@ function Palettes({ userData, deletePalette }) {
               </div>
               </div>
             ))
-          : !userPalettes && <h5>No Saved Palettes!</h5>}
+          : !userPalettes && 
+            <h5>No Saved Palettes!</h5>
+          }
       </div>
       <br />
       <div id="message" style={{ display: "none" }}>

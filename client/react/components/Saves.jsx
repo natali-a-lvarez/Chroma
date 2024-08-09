@@ -55,6 +55,23 @@ function Saves({
       }
     }
 
+    // Delete Color
+    async function deleteColor(user, color) {
+      try {
+        if (isAuthenticated) {
+          const res = await axios.post(`${apiURL}/users/delete-color`, {
+            email: user.email,
+            color: color
+          });
+          const data = res.data;
+          console.log(data);
+          fetchUser(user);
+        }
+      } catch (error) {
+          console.error("Error deleting color", error);
+        }
+      }
+
 
   return (
     <section>
@@ -79,7 +96,7 @@ function Saves({
       ) : (
         colorsView && (
           <>
-            <Colors userData={userData} />
+            <Colors userData={userData} deleteColor={deleteColor} />
           </>
         )
       )}

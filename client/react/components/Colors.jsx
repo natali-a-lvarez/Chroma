@@ -3,8 +3,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import "../styles/colors.css";
 
-function Colors({ userData }) {
-    const { isAuthenticated } = useAuth0();
+import { TrashOutline } from 'react-ionicons'
+
+function Colors({ userData, deleteColor }) {
+    const { user, isAuthenticated } = useAuth0();
     const userColors = userData.saved_colors;
 
     function handleCopyColor(currColor) {
@@ -35,16 +37,31 @@ function Colors({ userData }) {
         }, 1500);
     }
 
+    function handleDeleteColor(user, color) {
+        deleteColor(user, color);
+    }
+
     return (
         <>
         <div className="saved-colors" id={userColors && userColors.length >= 5 ? "five-saved-colors" : "less-five-saved-colors"}>
             {isAuthenticated && userColors ? (
                 userColors.map((color, idx) => (
+                    <div>
+                    <div className="delete-color">
+                        <button onClick={() => handleDeleteColor(user, color)}>
+                            <TrashOutline
+                                color={'#a2a7a5'} 
+                                height="20px"
+                                width="20px"
+                                />
+                        </button>
+                    </div>
                     <div className="saved-color-container" key={idx}>
                         <div className="saved-color" style={{ backgroundColor: "#" + color }}></div>
                         <button onClick={() => handleCopyColor(color)} className="hex-code" id={color}>
                             #{color}
                         </button>
+                    </div>
                     </div>
                 ))) : !userColors && (
                     <h5>No Saved Colors!</h5>
