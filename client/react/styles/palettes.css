@@ -24,7 +24,16 @@
 
 /* If User has only one saved palette */
 #single-palette {
-  display: block;
+  display: grid;
+  place-items: center;
+}
+
+.delete-palette {
+  text-align: right;
+}
+
+.delete-palette button {
+  font-size: 12pt;
 }
 
 .color {

@@ -3,9 +3,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import "../styles/palettes.css";
 
-function Palettes({ userData }) {
-  const { isAuthenticated } = useAuth0();
+function Palettes({ userData, deletePalette }) {
+  const { user, isAuthenticated } = useAuth0();
   const userPalettes = userData.saved_palettes;
+
+  // Set Current Palette
 
   function handleCopyColor(currColor) {
     navigator.clipboard.writeText("#" + currColor);
@@ -31,6 +33,12 @@ function Palettes({ userData }) {
     }, 1500);
   }
 
+
+  function handleDeletePalette(user, palette) {
+    deletePalette(user, palette);
+  }
+
+
   return (
     <section>
       <div
@@ -41,8 +49,11 @@ function Palettes({ userData }) {
             : "single-palette"
         }
       >
-        {isAuthenticated && userPalettes
-          ? userPalettes.map((palette, idx) => (
+        {isAuthenticated && userPalettes ? 
+          userPalettes.map((palette, idx) => (
+            <div>
+            <div className="delete-palette"><button onClick={() => handleDeletePalette(user, palette)}>Delete</button></div>
+
               <div className="palette" key={idx}>
                 {palette.map((color, index) => (
                   <div className="color-container" key={index}>
@@ -59,6 +70,7 @@ function Palettes({ userData }) {
                     </button>
                   </div>
                 ))}
+              </div>
               </div>
             ))
           : !userPalettes && <h5>No Saved Palettes!</h5>}

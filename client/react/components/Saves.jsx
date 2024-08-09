@@ -37,6 +37,25 @@ function Saves({
     fetchUser(user);
   }, [isAuthenticated]);
 
+
+  // Delete Palette
+  async function deletePalette(user, palette) {
+    try {
+      if (isAuthenticated) {
+        const res = await axios.post(`${apiURL}/users/delete-palette`, {
+          email: user.email,
+          palette: palette
+        });
+        const data = res.data;
+        console.log(data);
+        fetchUser(user);
+      }
+    } catch (error) {
+        console.error("Error deleting palette", error);
+      }
+    }
+
+
   return (
     <section>
       <div className="saves-flex">
@@ -56,7 +75,7 @@ function Saves({
 
       {/* Toggle Saved Palettes and Colors Display based on view (palettes/colors) */}
       {palettesView ? (
-        <Palettes userData={userData} />
+        <Palettes userData={userData} deletePalette={deletePalette}/>
       ) : (
         colorsView && (
           <>
