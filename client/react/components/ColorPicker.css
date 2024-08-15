@@ -18,7 +18,7 @@
 
 .right-col {
   background-color: var(--dark-color);
-  padding: 0.5rem;
+  padding: 1.5rem;
   border-radius: 10px;
 
   display: flex;
