@@ -9,9 +9,14 @@ import LoginButton from "./Login";
 import LogoutButton from "./Logout";
 
 function Navigation({
-  handlePaletterGeneratorPage,
+  handleHomePage,
+  handlePaletteGeneratorPage,
   handleColorPickerPage,
   handleSavesPage,
+  homePage,
+  palettePage,
+  colorPickerPage,
+  savesPage,
 }) {
   const { user, isAuthenticated } = useAuth0();
 
@@ -20,12 +25,39 @@ function Navigation({
       <img className="logo" src={logo} alt="chroma logo" />
       <ul className="nav_links">
         <li>
-          <p onClick={handlePaletterGeneratorPage}>Palette Generator</p>
+          <p
+            className={homePage ? "active-nav-link" : ""}
+            onClick={handleHomePage}
+          >
+            Home
+          </p>
         </li>
         <li>
-          <p onClick={handleColorPickerPage}>Color Picker</p>
+          <p
+            className={palettePage ? "active-nav-link" : ""}
+            onClick={handlePaletteGeneratorPage}
+          >
+            Palette Generator
+          </p>
         </li>
-        <li>{isAuthenticated && <p onClick={handleSavesPage}>Saves</p>}</li>
+        <li>
+          <p
+            className={colorPickerPage ? "active-nav-link" : ""}
+            onClick={handleColorPickerPage}
+          >
+            Color Picker
+          </p>
+        </li>
+        <li>
+          {isAuthenticated && (
+            <p
+              className={savesPage ? "active-nav-link" : ""}
+              onClick={handleSavesPage}
+            >
+              Saves
+            </p>
+          )}
+        </li>
         <li>
           <a>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</a>
         </li>
