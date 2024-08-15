@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ColorPicker.css";
+import "../styles/ColorPicker.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./Login";
 

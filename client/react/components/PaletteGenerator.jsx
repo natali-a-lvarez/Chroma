@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import apiURL from "../api";
 
-import "./PaletteGenerator.css";
+import "../styles/PaletteGenerator.css";
 import { CopyOutline } from "react-ionicons";
 
 function PaletterGenerator({

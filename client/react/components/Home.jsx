@@ -1,6 +1,6 @@
 import React from "react";
 import heroImg from "../../assets/hero-img.png";
-import "./Home.css";
+import "../styles/Home.css";
 
 const Home = ({ handleColorPickerPage, handlePaletteGeneratorPage }) => {
   return (
