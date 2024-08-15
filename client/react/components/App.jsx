@@ -6,13 +6,15 @@ import Saves from "./Saves";
 import Navigation from "./Navigation";
 import PaletterGenerator from "./PaletteGenerator";
 import ColorPicker from "./ColorPicker";
+import Home from "./Home";
 
 import axios from "axios";
 import apiURL from "../api";
 
 function App() {
+  const [homePage, setHomePage] = useState(true);
   const [savesPage, setSavesPage] = useState(false);
-  const [palettePage, setPalettePage] = useState(true);
+  const [palettePage, setPalettePage] = useState(false);
   const [colorPickerPage, setColorPickerPage] = useState(false);
   const [userData, setUserData] = useState([]);
 
@@ -40,31 +42,53 @@ function App() {
     fetchUser(user);
   }, []);
 
-  function handlePaletterGeneratorPage() {
+  function handleHomePage() {
+    setColorPickerPage(false);
+    setPalettePage(false);
+    setSavesPage(false);
+    setHomePage(true);
+  }
+
+  function handlePaletteGeneratorPage() {
     setColorPickerPage(false);
     setPalettePage(true);
     setSavesPage(false);
+    setHomePage(false);
   }
 
   function handleColorPickerPage() {
     setColorPickerPage(true);
     setPalettePage(false);
     setSavesPage(false);
+    setHomePage(false);
   }
 
   function handleSavesPage() {
     setColorPickerPage(false);
     setPalettePage(false);
     setSavesPage(true);
+    setHomePage(false);
   }
 
   return (
     <main>
       <Navigation
-        handlePaletterGeneratorPage={handlePaletterGeneratorPage}
+        handleHomePage={handleHomePage}
+        handlePaletteGeneratorPage={handlePaletteGeneratorPage}
         handleColorPickerPage={handleColorPickerPage}
         handleSavesPage={handleSavesPage}
+        homePage={homePage}
+        palettePage={palettePage}
+        colorPickerPage={colorPickerPage}
+        savesPage={savesPage}
       />
+
+      {homePage && !savesPage && !palettePage && !colorPickerPage && (
+        <Home
+          handleColorPickerPage={handleColorPickerPage}
+          handlePaletteGeneratorPage={handlePaletteGeneratorPage}
+        />
+      )}
 
       {savesPage && !palettePage && !colorPickerPage && (
         <Saves

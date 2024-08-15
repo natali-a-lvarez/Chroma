@@ -27,3 +27,7 @@
 .nav-icon {
   color: #fff;
 }
+
+.active-nav-link {
+  text-decoration: underline;
+}
