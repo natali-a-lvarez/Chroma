@@ -82,6 +82,42 @@ def save_palette():
         return jsonify({'message': 'Palette saved successfully'}), 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500
+    
+# Delete a Palette
+@user.route('/delete-palette', methods=['POST'])
+def delete_palette():
+    try:
+        # Get Request Data
+        data = request.get_json()
+        if not data:
+            return jsonify({'message': 'No data provided'}), 400
+        
+        # Get User
+        user = User.query.filter_by(email=data['email']).first()
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+        
+        # Check if Palette is provided
+        if 'palette' not in data:
+            return jsonify({'message': 'No palette provided'}), 400
+        
+        palette = data['palette']
+
+        # Check if Palette is saved
+        if palette not in user.saved_palettes:
+            return jsonify({'message': 'Palette not found'}), 404
+        
+        # Remove Palette from User List
+        user.saved_palettes.remove(palette)
+
+        # Flag as Modified to Reflect Changes, and Commit
+        flag_modified(user, 'saved_palettes')
+        db.session.commit()
+
+        return jsonify({'message': 'Palette deleted successfully'}), 200
+    except Exception as e:
+        return jsonify({'message': str(e)}), 500
+    
 
 # Save a Color
 @user.route('/save-color', methods=['POST'])
@@ -110,5 +146,35 @@ def save_color():
         db.session.commit()
 
         return jsonify({'message': 'Color saved successfully'}), 200
+    except Exception as e:
+        return jsonify({'message': str(e)}), 500
+    
+
+# Delete a Color
+@user.route('/delete-color', methods=['POST'])
+def delete_color():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'message': 'No data provided'}), 400
+        
+        user = User.query.filter_by(email=data['email']).first()
+        if not user:
+            return jsonify({'message': 'User not found'}), 404
+        
+        if 'color' not in data:
+            return jsonify({'message': 'No color provided'}), 400
+        
+        color = data['color']
+
+        if color not in user.saved_colors:
+            return jsonify({'message': 'Color not found'}), 404
+        
+        user.saved_colors.remove(color)
+
+        flag_modified(user, 'saved_colors')
+        db.session.commit()
+
+        return jsonify({'message': 'Color deleted successfully'}), 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500

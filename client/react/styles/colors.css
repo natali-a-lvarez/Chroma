@@ -30,6 +30,10 @@
     max-height: 70vh
 }
 
+.delete-color {
+    text-align: right;
+}
+
 /* If User has atleast five saved colors */
 #five-saved-colors {
     display: grid;

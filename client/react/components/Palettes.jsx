@@ -4,9 +4,10 @@ import { CopyOutline } from "react-ionicons";
 
 import "../styles/palettes.css";
 
-function Palettes({ userData }) {
-  const { isAuthenticated } = useAuth0();
+function Palettes({ userData, deletePalette }) {
+  const { user, isAuthenticated } = useAuth0();
   const userPalettes = userData.saved_palettes;
+
 
   function handleCopyColor(currColor) {
     navigator.clipboard.writeText("#" + currColor);
@@ -32,6 +33,12 @@ function Palettes({ userData }) {
     }, 1500);
   }
 
+
+  function handleDeletePalette(user, palette) {
+    deletePalette(user, palette);
+  }
+
+
   return (
     <section>
       <div
@@ -42,8 +49,11 @@ function Palettes({ userData }) {
             : "single-palette"
         }
       >
-        {isAuthenticated && userPalettes
-          ? userPalettes.map((palette, idx) => (
+        {isAuthenticated && userPalettes ? 
+          userPalettes.map((palette, idx) => (
+            <div>
+            <div className="delete-palette"><button onClick={() => handleDeletePalette(user, palette)}>Delete</button></div>
+
               <div className="palette" key={idx}>
                 {palette.map((color, index) => (
                   <div className="color-container" key={index}>
@@ -67,8 +77,11 @@ function Palettes({ userData }) {
                   </div>
                 ))}
               </div>
+              </div>
             ))
-          : !userPalettes && <h5>No Saved Palettes!</h5>}
+          : !userPalettes && 
+            <h5>No Saved Palettes!</h5>
+          }
       </div>
       <br />
       <div id="message" style={{ display: "none" }}>
