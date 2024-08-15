@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { CopyOutline } from "react-ionicons";
 
 import "../styles/colors.css";
+
 
 import { TrashOutline } from 'react-ionicons'
 
@@ -60,6 +62,12 @@ function Colors({ userData, deleteColor }) {
                         <div className="saved-color" style={{ backgroundColor: "#" + color }}></div>
                         <button onClick={() => handleCopyColor(color)} className="hex-code" id={color}>
                             #{color}
+                            <CopyOutline
+                              className="copy-icon"
+                              color={"#fff"}
+                              height="18px"
+                              width="18px"
+                            />
                         </button>
                     </div>
                     </div>

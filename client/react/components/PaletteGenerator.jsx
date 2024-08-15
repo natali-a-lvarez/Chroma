@@ -91,7 +91,17 @@ function PaletterGenerator({
                   className="palette-gen_color"
                   style={{ backgroundColor: "#" + rgbToHex(colorCode) }}
                 ></div>
-                <p>#{rgbToHex(colorCode)}</p>
+                <p>
+                  #{rgbToHex(colorCode)}
+                  <span>
+                    <CopyOutline
+                      className="copy-icon"
+                      color={"#fff"}
+                      height="18px"
+                      width="18px"
+                    />
+                  </span>
+                </p>
               </div>
             );
           })}

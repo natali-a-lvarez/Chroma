@@ -44,6 +44,7 @@ body {
   margin-top: 5px;
 }
 
-/* * {
-  border: red 1px solid;
-} */
+.copy-icon {
+  margin-left: 5px;
+}
+
