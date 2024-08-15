@@ -33,6 +33,7 @@
   padding: 0.5rem;
   border-radius: 10px;
   transition: 0.3s;
+  height: 3rem;
 }
 
 .palette-gen-btn {
