@@ -50,7 +50,7 @@ function Colors({ userData, deleteColor }) {
                     <div className="delete-color">
                         <button onClick={() => handleDeleteColor(user, color)}>
                             <TrashOutline
-                                color={'#a2a7a5'} 
+                                color={'#DB4C40'} 
                                 height="20px"
                                 width="20px"
                                 />
