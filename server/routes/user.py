@@ -73,7 +73,7 @@ def save_palette():
                 return jsonify({'message': 'Palette already saved'}), 400
             
         # Add Palette to User List
-        user.saved_palettes.append(new_palette)
+        user.saved_palettes.insert(0,new_palette)
 
         # Flag as Modified to Reflect Changes, and Commit
         flag_modified(user, 'saved_palettes')
