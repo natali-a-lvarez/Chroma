@@ -20,11 +20,22 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 0 5em;
 }
 
 /* If User has only one saved palette */
 #single-palette {
-  display: block;
+  display: grid;
+  place-items: center;
+}
+
+.delete-palette {
+  text-align: right;
+}
+
+.delete-palette button {
+  font-size: 12pt;
+  color: #DB4C40;
 }
 
 .color {
