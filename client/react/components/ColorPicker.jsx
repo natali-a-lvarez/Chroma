@@ -121,7 +121,7 @@ const ColorPicker = ({
           </div>
         )}
 
-        <div className="right-col">
+        <div className={image ? "right-col" : "right-col no-img_right-col"}>
           <div className="image-col-container">
             <input onChange={handleFileInput} type="file" accept="image/*" />
             <div

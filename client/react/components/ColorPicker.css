@@ -18,7 +18,7 @@
 
 .right-col {
   background-color: var(--dark-color);
-  padding: 3rem;
+  padding: 1.5rem;
   border-radius: 10px;
 
   display: flex;
@@ -27,6 +27,12 @@
   justify-content: center;
   width: 100%;
   color: #fff;
+  margin: 0 5rem;
+  margin-left: 1rem;
+}
+
+.no-img_right-col {
+  margin: 0 10rem;
 }
 
 .color-dropper-container p,
