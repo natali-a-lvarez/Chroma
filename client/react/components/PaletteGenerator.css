@@ -42,10 +42,10 @@
 }
 
 .palette-gen_color-container p {
-  background-color: var(--accent-color);
-  color: #000;
+  color: #fff;
   padding: 5px;
   border-radius: 5px;
+  font-weight: 500;
 }
 
 .palette-gen_color {
