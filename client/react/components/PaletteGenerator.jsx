@@ -91,6 +91,7 @@ function PaletterGenerator({
                   className="palette-gen_color"
                   style={{ backgroundColor: "#" + rgbToHex(colorCode) }}
                 ></div>
+
                 <p>
                   #{rgbToHex(colorCode)}
                   <span>
@@ -105,6 +106,45 @@ function PaletterGenerator({
               </div>
             );
           })}
+        </div>
+      )}
+      {!palette && (
+        <div className="palette-gen_palette-container">
+          <div className="palette-gen_color-container">
+            <div
+              className="palette-gen_color"
+              style={{ backgroundColor: "rgba(211,211,211, .85)" }}
+            ></div>
+            <p>#</p>
+          </div>
+          <div className="palette-gen_color-container">
+            <div
+              className="palette-gen_color"
+              style={{ backgroundColor: "rgba(211,211,211, .85)" }}
+            ></div>
+            <p>#</p>
+          </div>
+          <div className="palette-gen_color-container">
+            <div
+              className="palette-gen_color"
+              style={{ backgroundColor: "rgba(211,211,211, .85)" }}
+            ></div>
+            <p>#</p>
+          </div>
+          <div className="palette-gen_color-container">
+            <div
+              className="palette-gen_color"
+              style={{ backgroundColor: "rgba(211,211,211, .85)" }}
+            ></div>
+            <p>#</p>
+          </div>
+          <div className="palette-gen_color-container">
+            <div
+              className="palette-gen_color"
+              style={{ backgroundColor: "rgba(211,211,211, .85)" }}
+            ></div>
+            <p>#</p>
+          </div>
         </div>
       )}
       {showCopiedMessage && (
