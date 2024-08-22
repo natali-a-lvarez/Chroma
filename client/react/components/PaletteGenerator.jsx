@@ -23,7 +23,7 @@ function PaletterGenerator({
       const url = "http://colormind.io/api/";
       const data = {
         model: "default",
-        input: ["N", "N", "N", "N", "N"],
+        numColors: 5,
       };
       const response = await axios.post(url, JSON.stringify(data));
       const palette = response.data.result;
