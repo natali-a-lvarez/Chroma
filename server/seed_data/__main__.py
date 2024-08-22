@@ -5,7 +5,7 @@ from connection.database import db
 def seedUsers():
     db.session.query(User).delete()
 
-    with open('server/seed_data/seedUsers.json') as f:
+    with open('seed_data/seedUsers.json') as f:
         data = json.load(f)
 
         for user in data:
