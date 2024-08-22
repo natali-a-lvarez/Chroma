@@ -165,7 +165,7 @@ function PaletterGenerator({
             Save
           </button>
           {showLoginMessage && (
-            <p className="error-msg">Please log in to save palette.</p>
+            <p className="error-msg">Please log in to save.</p>
           )}
         </>
       )}
